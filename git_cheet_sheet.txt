@@ -1,4 +1,4 @@
-# the commonly used code of git by chou
+# the commonly used code of git
 
 # set user name and e-mail address
 git config --global user.name "your name"
@@ -63,8 +63,9 @@ git rm file
 git commit -m "memo"
 git checkout -- file
 
-# connect remote repository
-git remote add origin url
+# connect remote repository (first remove)
+git remote rm origin
+git remote add origin git@github.com:LostMiner/Abnormal.git
 git push -u origin master
 # -u relevance origin and local
 git clone url
