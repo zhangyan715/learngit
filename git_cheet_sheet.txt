@@ -1,0 +1,119 @@
+# the commonly used code of git by chou
+
+# set user name and e-mail address
+git config --global user.name "your name"
+git config --global user.email "your e-mail address"
+# --global here means all the repository in your pc will use this config
+
+# generate a new SSH key
+ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+eval $(ssh-agent -s)
+ssh-add ~/.ssh/id_rsa
+clip < ~/.ssh/id_rsa.pub
+
+# Add the GitHub to the list of authorized hosts:
+ssh-keyscan -t rsa github.com > ~/.ssh/known_hosts
+
+# create a new repository
+mkdir repository_name
+# enter into this repository
+cd repository_name
+# show the current repository
+pwd
+# initialize repository
+git init
+
+# first create a file (.txt)
+git add filename.fileformat 
+git commit -m "wrote a readme file"
+# -m means memo write anything in memo
+# it's possible to add multiple file and commit them altogether.
+
+# check the status of the repository and file 
+git status
+git diff filename.format
+
+# commits are kinds of snap at one shot, representing the modifications.
+# how to check the previous modification and memo
+git log
+git log --pretty=oneline
+
+# back to previous modification
+git reset --hard HEAD~numberofback
+git reset --hard numberofversion
+
+# check the order been made
+git reflog
+
+# cat file 
+
+# check the difference between file in working district and repository
+git diff HEAD -- filename.format
+
+# discard non-commit working file
+git checkout -- filename.format
+# if no -- here then command becomes create a new branch
+
+# discard non-commit but add file
+git reset HEAD filename.format
+
+# remove file
+rm file 
+git rm file 
+git commit -m "memo"
+git checkout -- file
+
+# connect remote repository
+git remote add origin url
+git push -u origin master
+# -u relevance origin and local
+git clone url
+cd file
+ls 
+
+# switch to new branch 
+git checkout -b name
+# -b means switch
+# git branch name
+# git checkout name
+
+# check branch
+git branch
+
+# merge branch to current branch
+git merge name
+
+# delete branch 
+git branch -d name
+
+# view file
+vi file
+# Vim Commands Cheat Sheet
+# http://www.fprintf.net/vimCheatSheet.html
+
+# see the log of branch management
+git log --graph --pretty=oneline --abbrev-commit
+
+# different way of merge
+git merge --no-ff -m "memo" brachname
+
+# store working site temporary
+git stash
+git stash apply 
+git stash drop
+git stash pop
+
+# strong delete
+git branch -D name
+
+# branch of remote repository
+git remote -v
+git push origin master
+git push origin name
+git checkout -b dev origin/dev
+git pull
+
+# mark branch
+git checkout branchname
+git tag v1.0
+git tag v0.9 previous (git log)
